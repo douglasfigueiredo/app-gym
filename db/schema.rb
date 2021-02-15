@@ -10,16 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_221328) do
+ActiveRecord::Schema.define(version: 2021_02_15_140403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_exercises", force: :cascade do |t|
+    t.string "name"
+    t.string "guide"
+    t.bigint "exercise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exercise_id"], name: "index_item_exercises_on_exercise_id"
+  end
+
+  create_table "item_trainings", force: :cascade do |t|
+    t.bigint "training_id", null: false
+    t.bigint "exercise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exercise_id"], name: "index_item_trainings_on_exercise_id"
+    t.index ["training_id"], name: "index_item_trainings_on_training_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nome"
+    t.string "idade"
+    t.string "sexo"
   end
 
+  add_foreign_key "item_exercises", "exercises"
+  add_foreign_key "item_trainings", "exercises"
+  add_foreign_key "item_trainings", "trainings"
 end
