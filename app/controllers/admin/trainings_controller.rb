@@ -1,4 +1,4 @@
-class TrainingsController < ApplicationController
+class Admin::TrainingsController < ApplicationController
   before_action :set_training, only: %i[ show edit update destroy ]
 
   # GET /trainings or /trainings.json

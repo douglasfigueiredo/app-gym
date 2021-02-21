@@ -1,4 +1,4 @@
-class ItemTrainingsController < ApplicationController
+class Admin::ItemTrainingsController < ApplicationController
   before_action :set_item_training, only: %i[ show edit update destroy ]
   before_action :set_training
 

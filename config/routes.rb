@@ -1,16 +1,29 @@
 Rails.application.routes.draw do
-  resources :trainings do
-    resources :item_trainings
+ 
+  constraints subdomain: "admin" do
+    scope module: 'admin' do
+      # index
+      get "/", to: "dashboard#index"
+      
+      # Users
+      resources :users
+      # Treinos
+      resources :trainings do
+        resources :item_trainings
+      end
+      # Exercícios
+      resources :exercises do
+        resources :item_exercises
+      end
+    end
   end
-  resources :exercises do
-    resources :item_exercises
-  end
-  resources :users
 
-  get '/admin', to: 'admin#index'
-  post '/cadastro', to: 'site#cadastro'
-
+  # Site
   root 'site#index'
+  post '/cadastro', to: 'site#cadastro'
+  
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

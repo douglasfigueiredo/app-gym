@@ -1,8 +1,9 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "maisgym.test"
-  config.hosts << "api.maisgym.test"
+  config.hosts << "maisgym.local"
+  config.hosts << "admin.maisgym.local"
+  config.hosts << "app.maisgym.local"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
