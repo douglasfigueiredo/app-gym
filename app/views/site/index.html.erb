@@ -7,7 +7,7 @@
             <%# Controle seus treinos de forma eficiente! %>
             Cadastre-se e receba informações sobre o lançamento do mais novo sistema de treinos de musculação!!!
           </h1>
-          <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Cadastre-se</a>
+          <a href="#cadastro" class="btn btn-outline btn-xl js-scroll-trigger">Cadastre-se</a>
           <div style="width:100%;text-align:'center';text-align: center;margin-top: 40px;">
             <a href="#saibamais" class="btn-xl js-scroll-trigger" style="color:#FFF;">Saiba mais</a>
           </div>
@@ -149,7 +149,7 @@
           </div>
           <div class="row">
             <div class="btn-cadastre-se">
-              <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Cadastre-se</a>
+              <a href="#cadastro" class="btn btn-outline btn-xl js-scroll-trigger">Cadastre-se</a>
             </div>
           </div>
         </div>
@@ -169,35 +169,13 @@
   <div class="overlay"></div>
 </section>
 -->
-<section class="contact bg-primary" id="contact">
+<section class="contact bg-primary" id="cadastro">
   <div class="container">
-    <h2>We
-      <i class="fas fa-heart"></i>
-      new friends!</h2>
-    <form class="form-cadastro" action="/cadastro" method="POST">
-      <div class="form-label-group">
-        <label for="inputNome">Nome</label>
-        <input type="text" id="inputNome" class="form-control" placeholder="Nome" name="nome" required="">
-      </div>
-      <div class="form-label-group">
-        <label for="inputEmail">E-mail</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" name="email" required="">
-      </div>
-      <div class="form-label-group">
-        <label for="inputSexo">Sexo</label>
-        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="sexo">
-          <option selected>Selecione...</option>
-          <option value="m">Masculino</option>
-          <option value="f">Feminino</option>
-        </select>
-      </div>
-      <div class="form-label-group">
-        <%= recaptcha_tags %>
-      </div>
-      <div class="form-label-group">
-        <button class="btn btn-lg btn-secondary btn-block" type="submit">Cadastrar</button>
-      </div>
-    </form>
+    <div class="col-lg-6 offset-md-3">
+      <h2>Cadastre-se grátis!</h2>
+    </div>
+      <%= render 'form', site: @user %>
+
     <%# <ul class="list-inline list-social">
       <li class="list-inline-item social-twitter">
         <a href="#">
@@ -248,4 +226,5 @@
       </li>
     </ul>
   </div>
+  
 </footer>

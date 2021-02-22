@@ -1,0 +1,23 @@
+ 
+    <%# <form class="form-cadastro" action="/cadastro" method="POST"> %>
+    <%= form_with :html => {:class => 'form-cadastro'}, url: "/cadastro", method: :post do |form| %>
+      <div class="form-label-group">
+        <label for="inputNome">Nome</label>
+        <%= form.text_field :nome, required: 'true', class: 'form-control', placeholder: 'Nome'%>
+      </div>
+      <div class="form-label-group">
+        <label for="inputEmail">E-mail</label>
+        <%= form.email_field :email, required: 'true', class: 'form-control', placeholder: 'E-mail'%>
+      </div>
+      <div class="form-label-group">
+        <label for="inputSexo">Escolha o Sexo</label>
+        <%= form.select :sexo, [["Masculino", "m"], ["Feminino", "f"]], {}, {required: 'true', class: 'custom-select mr-sm-2'} %>
+      </div>
+      <div class="form-label-group">
+        <%= recaptcha_tags %>
+      </div>
+      <div class="form-label-group">
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Cadastrar</button>
+      </div>
+    <%end%>  
+    <%# </form> %>
