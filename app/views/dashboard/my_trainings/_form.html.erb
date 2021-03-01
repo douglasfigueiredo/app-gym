@@ -1,0 +1,59 @@
+<%= form_with(model: my_training) do |form| %>
+  <h4 style="background-color: #e7b43e;padding: 20px;font-size: 32px;display: flex;justify-content: space-between;">
+    <%= training.title %>
+    <div class="actions">
+      <%= form.submit "Salvar treino", {class: "btn grey darken-4"} %>
+    </div>
+  </h4>
+  <div class="field">
+    <%= form.hidden_field :user_id, value: @user["id"] %>
+    <%= form.hidden_field :training_id, value: training.id %>
+  </div>
+  <ul class="collapsible grey darken-3">
+    <%= form.hidden_field :exercises_id, value: "[1,2,3]" %>
+    <%= form.hidden_field :items_exercise_id, value: "[1,2,3]" %>
+    <% training.item_trainings.each do |item|%>
+      <li class="collapsible-item grey darken-3">
+        <div class="collapsible-header grey darken-3" style="display: flex;justify-content: space-between;">
+          <span style="display: flex;align-items: center;">
+            <i class="material-icons" style="font-size: 18px;">play_arrow</i>
+            <span><%= item.exercise.name.upcase %></span>
+          </span> 
+          <div id="badge<%=item.exercise.id%>"></div>
+        </div>
+        <div class="collapsible-body grey darken-3">
+          <ul class="collection with-header grey darken-3">
+            <li class="collection-header grey darken-3"><h5>Selecione um exercício</h5></li>
+            <%item.exercise.item_exercises.each do |item_ex|%>
+              <li class="collection-item grey darken-3" style="display: flex;align-items: center;justify-content: space-between; padding-left:0!important;border-bottom: 1px solid #000;">
+                <label id="itemExercise<%=item_ex.id%>">
+                  <%= form.radio_button :exercises_id, "#{item_ex.id}",  onChange:"collapseAll({item:'#{item_ex.id}', exercicio:'#{item.exercise.id}'})" %>
+                  <span class="title-exercise"><%= item_ex.name.capitalize %></span>
+                </label>
+                
+                <a class="secondary-content waves-effect waves-light js-modal-btn" data-video-id="<%= item_ex.guide.split('watch?v=')[1] %>">
+                  <span class="new badge" style="background-color:#e7b43e;" data-badge-caption="ver video"></span>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<script>
+  var itemsExerciseId = [];
+  function collapseAll(ex) {
+    const exerciseItem = document.getElementById(`itemExercise${ex['item']}`).children[1].innerText;
+    itemsExerciseId.push(ex['exercicio']);
+    console.log(itemsExerciseId);
+
+    document.getElementById(`badge${ex['exercicio']}`).innerHTML = `<span class="new badge" data-badge-caption="${exerciseItem}"></span>`;
+    document.getElementById('items_exercise_id').value = itemsExerciseId;
+
+		var instance = M.Collapsible.getInstance($('.collapsible')); 
+		instance.close(ex['exercicio']-1);
+  }
+</script>

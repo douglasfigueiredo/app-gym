@@ -1,0 +1,82 @@
+<%# <%= form_with(model: profile) do |form| %>
+<%= form_for(profile, url:"#{ request.params[:action] == 'edit'? "/profile/update" : "/profile/create" }", html: { class: "form-horizontal", role: "form" }) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.hidden_field :user_id, value: @user["id"]%>
+      <label for="first_name" class="<%= 'active' if @user.profile.present?%>" >Nome</label>
+      <%= form.text_field :first_name ,class: 'validate'%>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s12">
+      <label for="last_name" class="<%= 'active' if @user.profile.present?%>">Sobrenome</label>
+      <%= form.text_field :last_name ,class: 'validate'%>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s12">
+      <label for="birthday" class="<%= 'active' if @user.profile.present?%>">Dada de nascimento</label>
+      <%= form.text_field :birthday ,class: 'datepicker validate'%>
+    </div>
+  </div>
+
+  <div class="row">
+     <div class="field genre-options">
+      <label for="genre" class="<%= 'active' if @user.profile.present?%>">Gênero</label>
+      <div class="genre-option">
+        <label class="option-male">
+          <%= form.radio_button :genre, "m" %>
+          <span>Masculino</span>
+        </label>
+      
+        <label class="option-female">
+          <%= form.radio_button :genre, "f" %>
+          <span>Feminino</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s12">
+      <button type="submit" class="btn waves-effect waves-light" style="width:100%; height:50px;">Salvar</button>
+    </div>
+  </div>
+<% end %>
+
+
+<style>
+.genre-options {
+
+  padding: 0 10px;
+}
+.genre-option{
+  display: flex;
+}
+.genre-options .option-male{
+  margin-right: 20px;
+}
+</style>
+
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      format: 'dd/mm/yyyy',
+      'yearRange': 70
+    });
+  });
+        
+</script>

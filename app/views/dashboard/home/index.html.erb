@@ -1,0 +1,75 @@
+<br>
+<br>
+
+
+<div class="container">
+  <h1 style="color: #fff;">Meus treinos</h1>
+  <div class="my-training-content" style="margin: 80px 0;">
+    <div class="row ">
+      <% @trainings.each do |training| %>
+        <div class="col s12 m6">
+          <div class="card grey darken-3">
+            <div class="card-content white-text">
+              <span class="card-title" style="color: #ffab40;"><%= training.title %></span>
+              <% training.item_trainings.each do |item|%>
+                <%= item.exercise.name.upcase %>,
+              <% end %>
+            </div>
+            <div class="card-action">
+              <a href="#">Iniciar treinos</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div>
+          <iframe width="100%" height="350" src=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: rgba(231,180,62,0.2);
+    outline: none;
+}
+
+</style>
+
+<script>
+ $(document).ready(function(){
+    $('.tabs').tabs();
+  });
+        
+  //FUNCTION TO GET AND AUTO PLAY YOUTUBE VIDEO FROM DATATAG
+  function autoPlayYouTubeModal(){
+    var trigger = $("body").find('[data-toggle="modal"]');
+    trigger.click(function() {
+      var theModal = $(this).data( "target" ),
+      videoSRC = $(this).attr( "data-theVideo" ),
+      videoSRCauto = videoSRC+"?autoplay=1" ;
+      $(theModal+' iframe').attr('src', videoSRCauto);
+      $(theModal+' button.close').click(function () {
+  $(theModal+' iframe').attr('src', videoSRC);
+      });
+    });
+  }
+  $(document).ready(function(){
+    autoPlayYouTubeModal();
+  });
+</script>

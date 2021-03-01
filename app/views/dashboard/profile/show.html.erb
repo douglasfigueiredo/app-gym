@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="card-profile-content">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="https://materializecss.com/images/office.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= @user.profile.first_name %> <%= @user.profile.last_name %></span>
+          <h6><%= @user.profile.birthday %></h6>
+          <h6><%= @user.profile.genre == "m" ? "Masculino" : "Feminino" %></h6>
+        </div>
+        <div class="card-action">
+          <p><a href="/profile/edit">Editar perfil</a></p>
+          <p><a href="/logout">Sair</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.card-profile-content {
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+  min-width: 320px;
+}
+.card-action{
+  display: flex;
+  justify-content: space-between;
+}
+
+</style>

@@ -11,6 +11,11 @@ module AppGym
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # We use a cookie_store for session data
+    # config.session_store :cookie_store, key: '_app_gym_session', domain: :all, tld_length: 2
+    
+    # config.middleware.use "CustomDomainCookie", ".maisgym.local"
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

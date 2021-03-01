@@ -28,7 +28,7 @@ class Admin::ItemExercisesController < ApplicationController
 
     respond_to do |format|
       if @item_exercise.save
-        format.html { redirect_to exercise_item_exercise_path(@exercise, @item_exercise), notice: "Item pedido was successfully created." }
+        format.html { redirect_to exercise_item_exercises_path(@exercise), notice: "Item pedido was successfully created." }
         # format.html { redirect_to @item_exercise, notice: "Item exercise was successfully created." }
         format.json { render :show, status: :created, location: @item_exercise }
       else

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_140403) do
+ActiveRecord::Schema.define(version: 2021_03_01_163147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,29 @@ ActiveRecord::Schema.define(version: 2021_02_15_140403) do
     t.index ["training_id"], name: "index_item_trainings_on_training_id"
   end
 
+  create_table "my_trainings", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.text "exercises_id", default: [], array: true
+    t.text "items_exercise_id", default: [], array: true
+    t.bigint "training_id", null: false
+    t.index ["training_id"], name: "index_my_trainings_on_training_id"
+    t.index ["users_id"], name: "index_my_trainings_on_users_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "birthday"
+    t.string "genre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "trainings", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -50,12 +73,12 @@ ActiveRecord::Schema.define(version: 2021_02_15_140403) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nome"
-    t.string "idade"
-    t.string "sexo"
   end
 
   add_foreign_key "item_exercises", "exercises"
   add_foreign_key "item_trainings", "exercises"
   add_foreign_key "item_trainings", "trainings"
+  add_foreign_key "my_trainings", "trainings"
+  add_foreign_key "my_trainings", "users", column: "users_id"
+  add_foreign_key "profiles", "users"
 end
