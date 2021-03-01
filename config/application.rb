@@ -11,7 +11,6 @@ module AppGym
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     
-    config.assets.initialize_on_precompile = false
     # We use a cookie_store for session data
     # config.session_store :cookie_store, key: '_app_gym_session', domain: :all, tld_length: 2
     
