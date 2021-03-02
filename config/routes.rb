@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'usuarios/new'
   # LOGIN DO SISTEMA
   # constraints subdomain: "login" do
   #   scope module: 'login' do
