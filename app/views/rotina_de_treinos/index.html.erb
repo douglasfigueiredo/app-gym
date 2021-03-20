@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%=@rotina.genero=="f" ? "Feminino" : "Masculino" %> | <%=@rotina.nome %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>#ID</th>
+      <th>Gênero</th>
+      <th>Rotina</th>
+      <th>Treino</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rotina_de_treinos.each do |rotina_de_treino| %>
+      <tr>
+        <td><%= rotina_de_treino.id%></td>
+        <td><%= rotina_de_treino.rotina.genero=="f" ? "Feminino" : "Masculino"%></td>
+        <td><%= rotina_de_treino.rotina.nome %></td>
+        <td><%= rotina_de_treino.treino.nome %></td>
+        <td><a href="/tipo_de_exercicio_do_treinos">Adicionar tipo de treino</a></td>
+        <td><%= link_to 'Ver treino', rotina_rotina_de_treino_path(@rotina, rotina_de_treino) %></td>
+        <td><%= link_to 'Editar', edit_rotina_rotina_de_treino_path(@rotina, rotina_de_treino) %></td>
+        <td><%= link_to 'Excluir', rotina_rotina_de_treino_path(@rotina, rotina_de_treino), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rotina De Treino', new_rotina_rotina_de_treino_path %>

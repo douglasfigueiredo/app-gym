@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rotina_de_treino: one
+  tipo_de_exercicio: one
+
+two:
+  rotina_de_treino: two
+  tipo_de_exercicio: two

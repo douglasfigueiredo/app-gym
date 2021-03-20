@@ -10,60 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_163147) do
+ActiveRecord::Schema.define(version: 2021_03_12_193837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "exercises", force: :cascade do |t|
-    t.string "name"
+  create_table "exercicio_repeticaos", force: :cascade do |t|
+    t.string "nome"
+    t.integer "min"
+    t.integer "max"
+    t.string "genero"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "item_exercises", force: :cascade do |t|
-    t.string "name"
-    t.string "guide"
-    t.bigint "exercise_id", null: false
+  create_table "exercicio_series", force: :cascade do |t|
+    t.string "nome"
+    t.integer "quantidade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["exercise_id"], name: "index_item_exercises_on_exercise_id"
   end
 
-  create_table "item_trainings", force: :cascade do |t|
-    t.bigint "training_id", null: false
-    t.bigint "exercise_id", null: false
+  create_table "exercicios", force: :cascade do |t|
+    t.string "nome"
+    t.string "tutorial"
+    t.bigint "tipo_de_exercicio_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["exercise_id"], name: "index_item_trainings_on_exercise_id"
-    t.index ["training_id"], name: "index_item_trainings_on_training_id"
+    t.index ["tipo_de_exercicio_id"], name: "index_exercicios_on_tipo_de_exercicio_id"
   end
 
-  create_table "my_trainings", force: :cascade do |t|
-    t.bigint "users_id", null: false
+  create_table "rotina_de_treinos", force: :cascade do |t|
+    t.bigint "rotina_id", null: false
+    t.bigint "treino_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.text "exercises_id", default: [], array: true
-    t.text "items_exercise_id", default: [], array: true
-    t.bigint "training_id", null: false
-    t.index ["training_id"], name: "index_my_trainings_on_training_id"
-    t.index ["users_id"], name: "index_my_trainings_on_users_id"
+    t.index ["rotina_id"], name: "index_rotina_de_treinos_on_rotina_id"
+    t.index ["treino_id"], name: "index_rotina_de_treinos_on_treino_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "birthday"
-    t.string "genre"
+  create_table "rotinas", force: :cascade do |t|
+    t.string "nome"
+    t.integer "quantidade_dias"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.string "genero"
   end
 
-  create_table "trainings", force: :cascade do |t|
-    t.string "title"
+  create_table "tipo_de_exercicio_do_treinos", force: :cascade do |t|
+    t.bigint "rotina_de_treino_id", null: false
+    t.bigint "tipo_de_exercicio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rotina_de_treino_id"], name: "index_tipo_de_exercicio_do_treinos_on_rotina_de_treino_id"
+    t.index ["tipo_de_exercicio_id"], name: "index_tipo_de_exercicio_do_treinos_on_tipo_de_exercicio_id"
+  end
+
+  create_table "tipo_de_exercicios", force: :cascade do |t|
+    t.string "nome"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "treinos", force: :cascade do |t|
+    t.string "nome"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -75,10 +85,9 @@ ActiveRecord::Schema.define(version: 2021_03_01_163147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "item_exercises", "exercises"
-  add_foreign_key "item_trainings", "exercises"
-  add_foreign_key "item_trainings", "trainings"
-  add_foreign_key "my_trainings", "trainings"
-  add_foreign_key "my_trainings", "users", column: "users_id"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "exercicios", "tipo_de_exercicios"
+  add_foreign_key "rotina_de_treinos", "rotinas"
+  add_foreign_key "rotina_de_treinos", "treinos"
+  add_foreign_key "tipo_de_exercicio_do_treinos", "rotina_de_treinos"
+  add_foreign_key "tipo_de_exercicio_do_treinos", "tipo_de_exercicios"
 end

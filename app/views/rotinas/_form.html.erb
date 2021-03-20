@@ -1,0 +1,42 @@
+<%= form_with(model: rotina) do |form| %>
+  <% if rotina.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rotina.errors.count, "error") %> prohibited this rotina from being saved:</h2>
+
+      <ul>
+        <% rotina.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="input-field col s12">
+    <select name="rotina[genero]" id="rotina_genero">
+      <option value="" disabled selected>Selecione o gênero</option>
+      <option value="f">Feminino</option>
+      <option value="m">Masculino</option>
+    </select>
+    <label>Gênero</label>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantidade_dias %>
+    <%= form.number_field :quantidade_dias %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

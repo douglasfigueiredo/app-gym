@@ -1,0 +1,10 @@
+@import "materialize/components/color-variables";
+$primary-color: color("grey", "darken-4") !default;
+$secondary-color: color("amber", "accent-4") !default;
+@import "materialize";
+
+.title-card {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}

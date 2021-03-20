@@ -1,0 +1,31 @@
+<%= form_for([@rotina, rotina_de_treino]) do |form| %>
+  <div class="row">
+    <% if rotina_de_treino.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(rotina_de_treino.errors.count, "error") %> prohibited this rotina_de_treino from being saved:</h2>
+
+        <ul>
+          <% rotina_de_treino.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <label>Treino</label>
+      <%= form.select :treino_id, Treino.all.collect { |treino| [(@rotina.genero=="f" ? "Feminino" : "Masculino")+ ' | ' + treino.nome, treino.id]}, {}, { class: 'form-control', required: true, selected: @set } %>
+    </div>
+  </div>
+  <div class="card-action" style="display: flex;justify-content: space-between;">
+    <%= link_to 'Voltar', rotina_rotina_de_treinos_path, class:"btn grey" %>
+    <%= form.submit "Salvar", class:"btn" %>
+  </div>
+
+<% end %>
+
+<script>
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

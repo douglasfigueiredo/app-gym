@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tipo De Exercicio Do Treinos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rotina de treino</th>
+      <th>Gênero</th>
+      <th>Tipo de exercicio</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_de_exercicio_do_treinos.each do |tipo_de_exercicio_do_treino| %>
+      <tr>
+        <td><%= tipo_de_exercicio_do_treino.rotina_de_treino.rotina.nome %> | <%= tipo_de_exercicio_do_treino.rotina_de_treino.treino.nome %></td>
+        <td><%= tipo_de_exercicio_do_treino.rotina_de_treino.rotina.genero=="f" ? "Feminino" : "Masculino" %></td>
+        <td><%= tipo_de_exercicio_do_treino.tipo_de_exercicio.nome %></td>
+        <td><%= link_to 'Show', tipo_de_exercicio_do_treino %></td>
+        <td><%= link_to 'Edit', edit_tipo_de_exercicio_do_treino_path(tipo_de_exercicio_do_treino) %></td>
+        <td><%= link_to 'Destroy', tipo_de_exercicio_do_treino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tipo De Exercicio Do Treino', new_tipo_de_exercicio_do_treino_path %>

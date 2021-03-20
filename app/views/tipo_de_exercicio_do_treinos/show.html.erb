@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rotina de treino:</strong>
+  <%= @tipo_de_exercicio_do_treino.rotina_de_treino_id %>
+</p>
+
+<p>
+  <strong>Tipo de exercicio:</strong>
+  <%= @tipo_de_exercicio_do_treino.tipo_de_exercicio_id %>
+</p>
+
+<%= link_to 'Edit', edit_tipo_de_exercicio_do_treino_path(@tipo_de_exercicio_do_treino) %> |
+<%= link_to 'Back', tipo_de_exercicio_do_treinos_path %>

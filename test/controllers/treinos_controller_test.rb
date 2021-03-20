@@ -17,7 +17,7 @@ class TreinosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create treino" do
     assert_difference('Treino.count') do
-      post treinos_url, params: { treino: { title: @treino.title } }
+      post treinos_url, params: { treino: { nome: @treino.nome } }
     end
 
     assert_redirected_to treino_url(Treino.last)
@@ -34,7 +34,7 @@ class TreinosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update treino" do
-    patch treino_url(@treino), params: { treino: { title: @treino.title } }
+    patch treino_url(@treino), params: { treino: { nome: @treino.nome } }
     assert_redirected_to treino_url(@treino)
   end
 

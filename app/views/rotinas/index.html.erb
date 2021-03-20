@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rotinas</h1>
+<div class="right-align">
+  <%= link_to 'Novo Rotina', new_rotina_path, class:"btn" %>
+</div>
+<br>
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Gênero</th>
+      <th>Nome</th>
+      <th>Quantidade dias</th>
+      <th></th>
+      <th></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rotinas.each do |rotina| %>
+      <tr>
+        <td><%= rotina.genero=="f" ? "Feminino" : "Masculino" %></td>
+        <td><%= rotina.nome %></td>
+        <td>
+          <%= rotina.quantidade_dias %> dias | 
+          <% rotina.rotina_de_treinos.each do |rt| %>
+           <span class="badge grey" style="color:#fff; font-size:11px;"><%= rt.treino.nome %></span>
+          <% end %>
+        </td>
+        <td><a href="<%=rotina_rotina_de_treinos_path(rotina)%>">Adicionar treinos</a></td>
+        <td><%= link_to 'Ver', rotina %></td>
+        <td><%= link_to 'Editar', edit_rotina_path(rotina) %></td>
+        <td><%= link_to 'Excluir', rotina, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+

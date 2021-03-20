@@ -14,7 +14,7 @@ class TreinosTest < ApplicationSystemTestCase
     visit treinos_url
     click_on "New Treino"
 
-    fill_in "Title", with: @treino.title
+    fill_in "Nome", with: @treino.nome
     click_on "Create Treino"
 
     assert_text "Treino was successfully created"
@@ -25,7 +25,7 @@ class TreinosTest < ApplicationSystemTestCase
     visit treinos_url
     click_on "Edit", match: :first
 
-    fill_in "Title", with: @treino.title
+    fill_in "Nome", with: @treino.nome
     click_on "Update Treino"
 
     assert_text "Treino was successfully updated"

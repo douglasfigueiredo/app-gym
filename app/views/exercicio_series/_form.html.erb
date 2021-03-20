@@ -1,0 +1,41 @@
+<%= form_with(model: exercicio_series) do |form| %>
+  <% if exercicio_series.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(exercicio_series.errors.count, "error") %> prohibited this exercicio_series from being saved:</h2>
+
+      <ul>
+        <% exercicio_series.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="input-field col s12">
+    <select name="exercicio_series[quantidade]" id="exercicio_series_quantidade">
+      <option value="" disabled selected>Selecione a quantidade</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <label>Quantidade</label>
+  </div>
+
+
+  <br>
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<script>
+ $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

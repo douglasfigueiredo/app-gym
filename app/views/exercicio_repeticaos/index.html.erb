@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exercicio Repeticaos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Genero</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercicio_repeticaos.each do |exercicio_repeticao| %>
+      <tr>
+        <td><%= exercicio_repeticao.nome %></td>
+        <td><%= exercicio_repeticao.min %></td>
+        <td><%= exercicio_repeticao.max %></td>
+        <td><%= exercicio_repeticao.genero %></td>
+        <td><%= link_to 'Show', exercicio_repeticao %></td>
+        <td><%= link_to 'Edit', edit_exercicio_repeticao_path(exercicio_repeticao) %></td>
+        <td><%= link_to 'Destroy', exercicio_repeticao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exercicio Repeticao', new_exercicio_repeticao_path %>

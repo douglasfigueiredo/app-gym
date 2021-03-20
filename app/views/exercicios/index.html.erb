@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exercícios</h1>
+<div class="right-align">
+  <%= link_to 'Novo Exercício', new_exercicio_path, class:"btn" %>
+</div>
+<br>
+<br>
+<div class="apple_pagination">
+  <%= will_paginate @exercicios, :container => false %>
+</div>
+<br>
+<% if @exercicios.blank? %>
+    <h5>Nenhum exercício encontrado</h5>
+<% else %>
+  <table class="responsive-table highlight">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tutorial</th>
+        <th>Tipo de exercício</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @exercicios.each do |exercicio| %>
+        <tr>
+          <td><%= exercicio.nome %></td>
+          <td><a href="<%= exercicio.tutorial %>" target="_blank"><%= exercicio.tutorial %></a></td>
+          <td><a href="tipo_de_exercicios/"><%= exercicio.tipo_de_exercicio.nome %></a></td>
+          <td><%= link_to 'Ver', exercicio %></td>
+          <td><%= link_to 'Editar', edit_exercicio_path(exercicio) %></td>
+          <td><%= link_to 'Excluir', exercicio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
+<br>
+<div class="apple_pagination">
+  <%= will_paginate @exercicios, :container => false %>
+</div>
+<br>
+<br>

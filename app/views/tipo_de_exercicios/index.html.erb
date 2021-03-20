@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tipos de exercícios</h1>
+<div class="right-align">
+  <%= link_to 'Novo Tipo De Exercício', new_tipo_de_exercicio_path, class:"btn" %>
+</div>
+<br>
+
+ <ul class="collapsible">
+  <% @tipo_de_exercicios.each do |tipo_de_exercicio| %>  
+    <li>
+      <div class="collapsible-header" style="display: flex;justify-content: space-between;align-items: center;">
+        <div style="flex:4;">
+          <%# <i class="material-icons">filter_drama</i> %>
+          <%= tipo_de_exercicio.nome %>
+        </div>
+        <div style="flex: 1;display: flex;justify-content: space-between;">
+          <%= link_to 'Ver', tipo_de_exercicio %>
+          <%= link_to 'Editar', edit_tipo_de_exercicio_path(tipo_de_exercicio) %>
+          <%= link_to 'Excluir', tipo_de_exercicio, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+      <div class="collapsible-body">
+        <span>
+          <ul class="collection">
+            <% tipo_de_exercicio.exercicios.each do |exercicio| %>
+              <li class="collection-item"><%= exercicio.nome %></li>
+            <% end %>
+          </ul>
+        </span>
+      </div>
+    </li>
+  <% end %>  
+</ul>
+
+<script>
+ $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>

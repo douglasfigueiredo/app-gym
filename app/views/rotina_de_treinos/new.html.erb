@@ -1,0 +1,16 @@
+<br>
+<br>
+<div class="col s12 m12">
+  <div class="card">
+    <div class="card-content">
+      <div class="row">
+        <span class="card-title"> 
+           Nova Rotina De Treino
+           <br>
+           <small><%=@rotina.genero=="f" ? "Feminino" : "Masculino"%> | <%=@rotina.nome %></small>
+        </span> 
+      </div>
+      <%= render 'form', rotina_de_treino: @rotina_de_treino %>
+    </div>
+  </div>
+</div>

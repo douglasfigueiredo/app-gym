@@ -221,3 +221,7 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ""
+
+  will_paginate:
+    previous_label: '<span class="glyph glyph-prev waves-effect"><i class="material-icons">chevron_left</i></span>'
+    next_label: '<span class="glyph glyph-next waves-effect"><i class="material-icons">chevron_right</i></span>'

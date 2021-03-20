@@ -1,0 +1,50 @@
+<%= form_with(model: exercicio_repeticao) do |form| %>
+  <% if exercicio_repeticao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(exercicio_repeticao.errors.count, "error") %> prohibited this exercicio_repeticao from being saved:</h2>
+
+      <ul>
+        <% exercicio_repeticao.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :min %>
+    <%= form.number_field :min %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max %>
+    <%= form.number_field :max %>
+  </div>
+
+  <div class="input-field col s12">
+    <select name="tipo_de_treino[genero]" id="tipo_de_treino_genero">
+      <option value="" disabled selected>Selecione o gênero</option>
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+    </select>
+    <label>Gênero</label>
+  </div>
+
+  <br>
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<script>
+ $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

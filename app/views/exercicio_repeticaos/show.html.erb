@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @exercicio_repeticao.nome %>
+</p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @exercicio_repeticao.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @exercicio_repeticao.max %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @exercicio_repeticao.genero %>
+</p>
+
+<%= link_to 'Edit', edit_exercicio_repeticao_path(@exercicio_repeticao) %> |
+<%= link_to 'Back', exercicio_repeticaos_path %>

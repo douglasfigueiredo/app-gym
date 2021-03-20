@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @rotina.nome %>
+</p>
+
+<p>
+  <strong>Quantidade dias:</strong>
+  <%= @rotina.quantidade_dias %>
+</p>
+
+<%= link_to 'Edit', edit_rotina_path(@rotina) %> |
+<%= link_to 'Back', rotinas_path %>

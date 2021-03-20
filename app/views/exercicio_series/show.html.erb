@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @exercicio_series.nome %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @exercicio_series.quantidade %>
+</p>
+
+<%= link_to 'Edit', edit_exercicio_series_path(@exercicio_series) %> |
+<%= link_to 'Back', exercicio_series_index_path %>
