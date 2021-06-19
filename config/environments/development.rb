@@ -6,6 +6,7 @@ Rails.application.configure do
   config.hosts << "login.maisgym.local"
   config.hosts << "signup.maisgym.local"
   config.hosts << "dashboard.maisgym.local"
+  config.hosts << "cd2f0c9a0477.ngrok.io"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

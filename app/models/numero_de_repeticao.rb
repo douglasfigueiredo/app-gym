@@ -1,0 +1,2 @@
+class NumeroDeRepeticao < ApplicationRecord
+end

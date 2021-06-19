@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  min: 1
+  max: 1
+  genero: MyString
+
+two:
+  titulo: MyString
+  min: 1
+  max: 1
+  genero: MyString

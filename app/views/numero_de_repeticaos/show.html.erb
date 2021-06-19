@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @numero_de_repeticao.titulo %>
+</p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @numero_de_repeticao.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @numero_de_repeticao.max %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @numero_de_repeticao.genero %>
+</p>
+
+<%= link_to 'Edit', edit_numero_de_repeticao_path(@numero_de_repeticao) %> |
+<%= link_to 'Back', numero_de_repeticaos_path %>

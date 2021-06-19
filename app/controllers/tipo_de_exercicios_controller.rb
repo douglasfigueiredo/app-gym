@@ -64,6 +64,6 @@ class TipoDeExerciciosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tipo_de_exercicio_params
-      params.require(:tipo_de_exercicio).permit(:nome)
+      params.require(:tipo_de_exercicio).permit(:nome, :numero_de_series, :reducao)
     end
 end

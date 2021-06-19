@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Numero De Repeticaos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Genero</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @numero_de_repeticaos.each do |numero_de_repeticao| %>
+      <tr>
+        <td><%= numero_de_repeticao.titulo %></td>
+        <td><%= numero_de_repeticao.min %></td>
+        <td><%= numero_de_repeticao.max %></td>
+        <td><%= numero_de_repeticao.genero %></td>
+        <td><%= link_to 'Show', numero_de_repeticao %></td>
+        <td><%= link_to 'Edit', edit_numero_de_repeticao_path(numero_de_repeticao) %></td>
+        <td><%= link_to 'Destroy', numero_de_repeticao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Numero De Repeticao', new_numero_de_repeticao_path %>

@@ -14,6 +14,16 @@
           <%# <i class="material-icons">filter_drama</i> %>
           <%= tipo_de_exercicio.nome %>
         </div>
+        <div style="flex:4;">
+          <%# <i class="material-icons">filter_drama</i> %>
+          <label for="numero de series">Número de séries: </label>
+          <%= tipo_de_exercicio.numero_de_series %>
+        </div>
+        <div style="flex:4;">
+          <%# <i class="material-icons">filter_drama</i> %>
+          <label for="reducao">Redução: </label>
+          <%= tipo_de_exercicio.reducao %>
+        </div>
         <div style="flex: 1;display: flex;justify-content: space-between;">
           <%= link_to 'Ver', tipo_de_exercicio %>
           <%= link_to 'Editar', edit_tipo_de_exercicio_path(tipo_de_exercicio) %>

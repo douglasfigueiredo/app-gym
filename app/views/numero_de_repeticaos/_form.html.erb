@@ -1,10 +1,10 @@
-<%= form_with(model: exercicio_repeticao) do |form| %>
-  <% if exercicio_repeticao.errors.any? %>
+<%= form_with(model: numero_de_repeticao) do |form| %>
+  <% if numero_de_repeticao.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(exercicio_repeticao.errors.count, "error") %> prohibited this exercicio_repeticao from being saved:</h2>
+      <h2><%= pluralize(numero_de_repeticao.errors.count, "error") %> prohibited this numero_de_repeticao from being saved:</h2>
 
       <ul>
-        <% exercicio_repeticao.errors.each do |error| %>
+        <% numero_de_repeticao.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
 
   <div class="input-field col s12">
-    <select name="exercicio_repeticao[genero]" id="exercicio_repeticao_genero">
+    <select name="numero_de_repeticao[genero]" id="numero_de_repeticao_genero">
       <option value="" disabled selected>Selecione o gênero</option>
       <option value="M">Masculino</option>
       <option value="F">Feminino</option>
@@ -39,7 +39,7 @@
   <br>
   <br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar' %>
   </div>
 <% end %>
 

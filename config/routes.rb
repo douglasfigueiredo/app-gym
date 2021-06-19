@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :numero_de_repeticaos
   resources :rotinas do
     resources :rotina_de_treinos
   end

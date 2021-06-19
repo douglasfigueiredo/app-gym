@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_193837) do
+ActiveRecord::Schema.define(version: 2021_06_02_023739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2021_03_12_193837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tipo_de_exercicio_id"], name: "index_exercicios_on_tipo_de_exercicio_id"
+  end
+
+  create_table "numero_de_repeticaos", force: :cascade do |t|
+    t.string "titulo"
+    t.integer "min"
+    t.integer "max"
+    t.string "genero"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rotina_de_treinos", force: :cascade do |t|
@@ -70,6 +79,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_193837) do
     t.string "nome"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "numero_de_series"
+    t.string "reducao"
   end
 
   create_table "treinos", force: :cascade do |t|
